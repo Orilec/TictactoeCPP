@@ -3,21 +3,24 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
 
 int main(){
 
     bool partiegagnee = false;
     Tictactoe * jeu = new Tictactoe();
-     
-    int numeroCase;
+
+    int colonne;
+    int ligne;
 
 
 
     while(!partiegagnee && !(jeu->testeJeuNul())){
         
         jeu->afficheGrille();
-        std::cin >> numeroCase;
-        jeu->ajouteSymbole(numeroCase,0);
+        cin >> colonne;
+        cin >> ligne;
+        jeu->ajouteSymbole(colonne, ligne);
         partiegagnee = jeu->testeVictoireDiagonale() || jeu->testeVictoireHorizontale() || jeu->testeVictoireVerticale();
         jeu->finTour();
     }
