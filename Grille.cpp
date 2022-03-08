@@ -44,8 +44,13 @@ void Grille::affiche()
         for (int j = 0; j < 3; j++)
         {
             cout << _tableau.at(3 * i + j);
+            cout << "|";
         }
         cout << "" << endl;
+        if (i<2){
+           cout << "-------" << endl; 
+        }
+        
     }
 }
 

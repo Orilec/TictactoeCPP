@@ -14,7 +14,7 @@ class Tictactoe {
     public:
         Tictactoe();
         void afficheGrille();
-        void ajouteSymbole(int x, int y);
+        bool ajouteSymbole(int x, int y);
         bool testeVictoireVerticale();
         bool testeVictoireHorizontale();
         bool testeVictoireDiagonale();

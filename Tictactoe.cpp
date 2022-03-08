@@ -12,9 +12,16 @@ void Tictactoe::afficheGrille()
     _grilleDeJeu.affiche();
 }
 
-void Tictactoe::ajouteSymbole(int x, int y)
+bool Tictactoe::ajouteSymbole(int x, int y)
 {
-    _grilleDeJeu.setContent(x, y, _symboleCourant);
+    if (_grilleDeJeu.getContent(x, y) == ' '){
+        _grilleDeJeu.setContent(x, y, _symboleCourant);
+        return true;
+    }
+    else{
+        return false;
+    }
+    
 }
 
 bool Tictactoe::testeVictoireVerticale()
@@ -33,7 +40,7 @@ bool Tictactoe::testeVictoireHorizontale()
 {
     for (int j = 0; j < 3; j++)
     {
-        if (_grilleDeJeu.getContent(j, 0) == _grilleDeJeu.getContent(j, 1) == _grilleDeJeu.getContent(j, 2) == _symboleCourant)
+        if ((_grilleDeJeu.getContent(j, 0) == _grilleDeJeu.getContent(j, 1)) && (_grilleDeJeu.getContent(j, 1) == _grilleDeJeu.getContent(j, 2)) && (_grilleDeJeu.getContent(j, 0) == _symboleCourant))
         {
             return true;
         }
@@ -43,11 +50,11 @@ bool Tictactoe::testeVictoireHorizontale()
 
 bool Tictactoe::testeVictoireDiagonale()
 {
-    if (_grilleDeJeu.getContent(0, 2) == _grilleDeJeu.getContent(1, 1) == _grilleDeJeu.getContent(2, 0) == _symboleCourant)
+    if ((_grilleDeJeu.getContent(0, 2) == _grilleDeJeu.getContent(1, 1)) && (_grilleDeJeu.getContent(1, 1) == _grilleDeJeu.getContent(2, 0)) && (_grilleDeJeu.getContent(0, 2) == _symboleCourant))
     {
         return true;
     }
-    else if (_grilleDeJeu.getContent(0, 0) == _grilleDeJeu.getContent(1, 1) == _grilleDeJeu.getContent(2, 2) == _symboleCourant)
+    else if ((_grilleDeJeu.getContent(0, 0) == _grilleDeJeu.getContent(1, 1)) && (_grilleDeJeu.getContent(1, 1) == _grilleDeJeu.getContent(2, 2)) && (_grilleDeJeu.getContent(0, 0) == _symboleCourant))
     {
         return true;
     }
@@ -58,7 +65,7 @@ bool Tictactoe::testeVictoireDiagonale()
 
 bool Tictactoe::testeJeuNul()
 {
-    if (_numeroTour>9){
+    if (_numeroTour>8){
         return true;
     }
     else{
